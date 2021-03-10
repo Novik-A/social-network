@@ -1,0 +1,9 @@
+.logo {
+    height: 50px;
+    padding: 10px 20px;
+}
+
+.header {
+    grid-area: h;
+    background-color: blueviolet;
+}
