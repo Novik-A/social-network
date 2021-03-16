@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {ChangeEvent} from 'react';
 import {PostType, StateType} from "../App";
 
 export type StoreType = {
@@ -8,16 +8,14 @@ export type StoreType = {
     subscribe: (observer: (state: StateType) => void) => void
     addPost: () => void
     updateNewPostText: (newText: string) => void
-    dispatch: (action: AddPostActionType | NewPostActionType) => void
+    dispatch: (action: ActionsTypes) => void
 }
 
-export type AddPostActionType = {
-    type: 'ADD-POST'
-}
-export type NewPostActionType = {
-    type: 'UPDATE-NEW-POST-TEXT'
-    newText: string
-}
+export type ActionsTypes = ReturnType<typeof addPostActionCreator> | ReturnType<typeof updatePostActionCreator>
+export const addPostActionCreator = () => ({type: "ADD-POST"}) as const
+export const updatePostActionCreator = (e: ChangeEvent<HTMLTextAreaElement>) => (
+    {type: "UPDATE-NEW-POST-TEXT", newText: (e.currentTarget.value)}
+) as const
 
 const store: StoreType = {
     _state: {
@@ -93,7 +91,6 @@ const store: StoreType = {
             this._callSubscriber(this._state)
         }
     }
-
 }
 
 export default store

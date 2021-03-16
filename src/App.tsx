@@ -6,7 +6,7 @@ import {Profile} from "./components/Profile/Profile";
 import {Dialogs} from "./components/Dialogs/Dialogs";
 // @ts-ignore
 import {BrowserRouter, Route} from "react-router-dom";
-import {AddPostActionType, NewPostActionType} from "./Redux/state";
+import {ActionsTypes} from "./Redux/state";
 
 
 export type NavbarItemType = {
@@ -47,7 +47,7 @@ type AppPropsType = {
         profilePage: PostsType
         dialogsPage: DialogsType
     }
-    dispatch: (action: AddPostActionType | NewPostActionType) => void
+    dispatch: (action: ActionsTypes) => void
 }
 
 export function App(props: AppPropsType) {
