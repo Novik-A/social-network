@@ -6,6 +6,7 @@ import {Profile} from "./components/Profile/Profile";
 import {Dialogs} from "./components/Dialogs/Dialogs";
 // @ts-ignore
 import {BrowserRouter, Route} from "react-router-dom";
+import {AddPostActionType, NewPostActionType} from "./Redux/state";
 
 
 export type NavbarItemType = {
@@ -46,8 +47,7 @@ type AppPropsType = {
         profilePage: PostsType
         dialogsPage: DialogsType
     }
-    addPost: () => void
-    updateNewPostText: (newText: string) => void
+    dispatch: (action: AddPostActionType | NewPostActionType) => void
 }
 
 export function App(props: AppPropsType) {
@@ -65,8 +65,7 @@ export function App(props: AppPropsType) {
                         path='/profile'
                         render={() => <Profile
                             profileState={props.state.profilePage}
-                            addPost={props.addPost}
-                            updateNewPostText={props.updateNewPostText}
+                            dispatch={props.dispatch}
                         />}
                     />
                     {/*<Route path='/news' render={() => <Profile profileState={props.state.profilePage} addPost={props.addPost}/>}/>*/}

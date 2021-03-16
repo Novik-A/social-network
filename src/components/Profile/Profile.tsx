@@ -3,14 +3,14 @@ import s from './Profile.module.css'
 import {MyPosts} from "./MyPosts/MyPosts";
 import {ProfileInfo} from "./ProfileInfo/ProfileInfo";
 import {PostType} from "../../App";
+import {AddPostActionType, NewPostActionType} from "../../Redux/state";
 
 type ProfilePropsType = {
     profileState: {
         posts: Array<PostType>
         newPostText: string
     }
-    addPost: () => void
-    updateNewPostText: (newText: string) => void
+    dispatch: (action: AddPostActionType | NewPostActionType) => void
 }
 
 export function Profile(props: ProfilePropsType) {
@@ -18,8 +18,7 @@ export function Profile(props: ProfilePropsType) {
         <div>
             <ProfileInfo />
             <MyPosts posts = {props.profileState.posts}
-                     addPost={props.addPost}
-                     updateNewPostText={props.updateNewPostText}
+                     dispatch={props.dispatch}
                      newPostText={props.profileState.newPostText}
             />
         </div>
