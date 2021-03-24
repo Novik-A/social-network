@@ -3,9 +3,9 @@ import './App.css';
 import {Header} from "./components/Header/Header";
 import {Navbar} from "./components/Navbar/Navbar";
 import {Profile} from "./components/Profile/Profile";
-import {Dialogs} from "./components/Dialogs/Dialogs";
 import {Route} from "react-router-dom";
-import {ActionsTypes} from "./Redux/redux-store";
+import {ActionsTypes, ReduxStoreType} from "./Redux/redux-store";
+import { DialogsContainer } from './components/Dialogs/DialogsContainer';
 
 
 export type NavbarItemType = {
@@ -37,35 +37,36 @@ export type DialogsType = {
     newMessageBody: string
 }
 export type StateType = {
-    sidebarReducer: Array<NavbarItemType>
-    profileReducer: PostsType
-    dialogsReducer: DialogsType
+    sidebar: Array<NavbarItemType>
+    profilePage: PostsType
+    dialogsPage: DialogsType
 }
 type AppPropsType = {
     state: {
-        sidebarReducer: Array<NavbarItemType>
-        profileReducer: PostsType
-        dialogsReducer: DialogsType
+        sidebar: Array<NavbarItemType>
+        profilePage: PostsType
+        dialogsPage: DialogsType
     }
     dispatch: (action: ActionsTypes) => void
+    store: ReduxStoreType
+}
+export type StoreType = {
+    store: ReduxStoreType
 }
 
 export function App(props: AppPropsType) {
     return (
         <div className="App">
             <Header/>
-            <Navbar sidebar={props.state.sidebarReducer}/>
+            <Navbar sidebar={props.state.sidebar}/>
             <div className='App-content'>
                 <Route
                     path='/dialogs'
-                    render={() => <Dialogs dialogsState={props.state.dialogsReducer}
-                                           dispatch={props.dispatch} />}
+                    render={() => <DialogsContainer store={props.store}/>}
                 />
                 <Route
                     path='/profile'
-                    render={() => <Profile
-                        profileState={props.state.profileReducer}
-                        dispatch={props.dispatch} />}
+                    render={() => <Profile store={props.store}/>}
                 />
                 {/*<Route path='/news' render={() => <Profile profileState={props.state.profilePage} addPost={props.addPost}/>}/>*/}
                 {/*<Route path='/music' render={() => <Profile profileState={props.state.profilePage} addPost={props.addPost}/>}/>*/}

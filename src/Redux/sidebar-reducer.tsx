@@ -10,7 +10,7 @@ const initialState: NavbarItemType[] = [
     {id: 6, address: 'friends', name: 'Friends'},
 ]
 
-export const sidebarReducer = (state: NavbarItemType[] = initialState, action: ActionsTypes) => {
+export const sidebarReducer = (state: NavbarItemType[] = initialState, action: ActionsTypes): NavbarItemType[] => {
     return state
 
 }

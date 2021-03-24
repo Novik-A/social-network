@@ -11,7 +11,7 @@ const initialState: PostsType = {
     newPostText: 'IT'
 }
 
-export const profileReducer = (state: PostsType = initialState, action: ActionsTypes) => {
+export const profileReducer = (state: PostsType = initialState, action: ActionsTypes): PostsType => {
     switch (action.type) {
         case "ADD-POST":
             const newPost: PostType = {

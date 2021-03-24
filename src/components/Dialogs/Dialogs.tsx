@@ -3,24 +3,23 @@ import { DialogItem } from "./DialogItem/DialogItem";
 import s from './Dialogs.module.css'
 import { Message } from "./Message/Message";
 import {DialogsType} from "../../App";
-import {sendMessageActionCreator, updateMessageActionCreator} from "../../Redux/dialogs-reducer";
-import {ActionsTypes} from "../../Redux/redux-store";
 
 type DialogsPropsType = {
-    dialogsState: DialogsType
-    dispatch: (action: ActionsTypes) => void
+    state: DialogsType
+    sendMessage: () => void
+    updateMessage: (e: ChangeEvent<HTMLTextAreaElement>) => void
 }
 
 export function Dialogs(props: DialogsPropsType) {
 
-    let dialogsElements = props.dialogsState.dialogs.map(d => <DialogItem id={d.id} name={d.name} avatar={d.avatar}/>)
-    let messagesElements = props.dialogsState.messages.map(m => <Message id={m.id} message={m.message}/>)
-    const newMessageBody = props.dialogsState.newMessageBody
+    let dialogsElements = props.state.dialogs.map(d => <DialogItem id={d.id} name={d.name} avatar={d.avatar}/>)
+    let messagesElements = props.state.messages.map(m => <Message id={m.id} message={m.message}/>)
+    const newMessageBody = props.state.newMessageBody
     const onSendMessageClick = () => {
-        props.dispatch(sendMessageActionCreator())
+        props.sendMessage()
     }
     const onNewMessageChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
-        props.dispatch(updateMessageActionCreator(e))
+        props.updateMessage(e)
     }
     return (
         <div className={s.dialogs}>

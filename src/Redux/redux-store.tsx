@@ -8,14 +8,15 @@ export type ActionsTypes = ReturnType<typeof addPostActionCreator> |
     ReturnType<typeof sendMessageActionCreator> |
     ReturnType<typeof updateMessageActionCreator>
 
-let reducers = combineReducers({
-    sidebarReducer,
-    profileReducer,
-    dialogsReducer
+let rootReducer = combineReducers({
+    sidebar: sidebarReducer,
+    profilePage: profileReducer,
+    dialogsPage: dialogsReducer
 })
 
-export type ReduxStoreType = ReturnType<typeof reducers>
+export type AppStateType = ReturnType<typeof rootReducer>
 
-let store = createStore(reducers)
+const store = createStore(rootReducer)
+export type ReduxStoreType = typeof store
 
 export default store
