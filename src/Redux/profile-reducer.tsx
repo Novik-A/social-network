@@ -1,17 +1,24 @@
-import {PostsType, PostType} from "../App";
 import {ActionsTypes} from "./redux-store";
 import {ChangeEvent} from "react";
 
-const initialState: PostsType = {
+export type PostType = {
+    id: number
+    message: string
+    likes: number
+}
+
+const initialState = {
     posts: [
         {id: 1, message: 'Hi, how are you?', likes: 5},
         {id: 2, message: 'It\'s my first post', likes: 3},
         {id: 3, message: 'Hello, hello', likes: 10},
-    ],
+    ] as PostType[],
     newPostText: 'IT'
 }
 
-export const profileReducer = (state: PostsType = initialState, action: ActionsTypes): PostsType => {
+export type InitialStatePostsType = typeof initialState
+
+export const profileReducer = (state: InitialStatePostsType = initialState, action: ActionsTypes): InitialStatePostsType => {
     switch (action.type) {
         case "ADD-POST":
             const newPost: PostType = {

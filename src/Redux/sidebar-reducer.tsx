@@ -1,5 +1,10 @@
-import {NavbarItemType} from "../App";
 import {ActionsTypes} from "./redux-store";
+
+type NavbarItemType = {
+    id: number
+    address: string
+    name: string
+}
 
 const initialState: NavbarItemType[] = [
     {id: 1, address: 'profile', name: 'Profile'},
@@ -12,5 +17,4 @@ const initialState: NavbarItemType[] = [
 
 export const sidebarReducer = (state: NavbarItemType[] = initialState, action: ActionsTypes): NavbarItemType[] => {
     return state
-
 }

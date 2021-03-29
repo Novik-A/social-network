@@ -27,11 +27,11 @@ export type PostType = {
     message: string
     likes: number
 }
-export type PostsType = {
+type PostsType = {
     posts: Array<PostType>
     newPostText: string
 }
-export type DialogsType = {
+type DialogsType = {
     dialogs: Array<DialogItemType>
     messages: Array<MessageType>
     newMessageBody: string
@@ -42,13 +42,7 @@ export type StateType = {
     dialogsPage: DialogsType
 }
 type AppPropsType = {
-    state: {
-        sidebar: Array<NavbarItemType>
-        profilePage: PostsType
-        dialogsPage: DialogsType
-    }
-    dispatch: (action: ActionsTypes) => void
-    store: ReduxStoreType
+    state: StateType
 }
 export type StoreType = {
     store: ReduxStoreType
@@ -62,11 +56,11 @@ export function App(props: AppPropsType) {
             <div className='App-content'>
                 <Route
                     path='/dialogs'
-                    render={() => <DialogsContainer store={props.store}/>}
+                    render={() => <DialogsContainer />}
                 />
                 <Route
                     path='/profile'
-                    render={() => <Profile store={props.store}/>}
+                    render={() => <Profile />}
                 />
                 {/*<Route path='/news' render={() => <Profile profileState={props.state.profilePage} addPost={props.addPost}/>}/>*/}
                 {/*<Route path='/music' render={() => <Profile profileState={props.state.profilePage} addPost={props.addPost}/>}/>*/}
