@@ -13,7 +13,7 @@ type MessageType = {
 
 const initialState = {
     dialogs: [
-        {id: 1, name: 'Dimych', avatar: 'https://mygamehunter.ru/images/thumbnail/86332/550'},
+        {id: 1, name: 'Dimych', avatar: 'https://image.freepik.com/free-vector/samurai-esports-logo-for-your-team_116205-81.jpg'},
         {id: 2, name: 'Victor', avatar: 'https://www.artmajeur.com/medias/standard/k/o/koldin-84/artwork/9533635_alone-anime-anime-art-anime-boy-favim-com-1898320.jpg'},
         {id: 3, name: 'Valera', avatar: 'https://avatars.mds.yandex.net/get-zen_doc/3731867/pub_5f087e01d20c9b4c4ae96672_5f0c5edea04dd3125fdb5c13/scale_1200'},
         {id: 4, name: 'Sveta', avatar: 'https://natelegram.ru/wp-content/uploads/2017/11/anime_art-1-320x320.jpg'},
@@ -37,13 +37,14 @@ export type InitialStateDialogsType = typeof initialState
 export const dialogsReducer = (state: InitialStateDialogsType = initialState, action: ActionsTypes): InitialStateDialogsType => {
     switch (action.type) {
         case "UPDATE-NEW-MESSAGE-BODY":
-            state.newMessageBody = action.body
-            return state
+            return {...state, newMessageBody: action.body}
         case "SEND-MESSAGE":
             const body = state.newMessageBody
-            state.newMessageBody = ''
-            state.messages.push({id: 6, message: body})
-            return state
+            return {
+                ...state,
+                messages: [...state.messages, {id: 6, message: body}],
+                newMessageBody: ''
+            }
         default:
             return state
     }

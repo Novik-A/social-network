@@ -6,7 +6,7 @@ import {PostType} from "../../../../App";
 export function Post(props: PostType) {
     return (
         <div className={s.post}>
-            <img src={"https://mygamehunter.ru/images/thumbnail/86332/550"} alt=""/>
+            <img src={"https://image.freepik.com/free-vector/samurai-esports-logo-for-your-team_116205-81.jpg"} alt=""/>
             {props.message}
             <div>{`likes ${props.likes}`}</div>
         </div>
