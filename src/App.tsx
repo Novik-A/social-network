@@ -4,8 +4,9 @@ import {Header} from "./components/Header/Header";
 import {Navbar} from "./components/Navbar/Navbar";
 import {Profile} from "./components/Profile/Profile";
 import {Route} from "react-router-dom";
-import {ActionsTypes, ReduxStoreType} from "./Redux/redux-store";
+import {ReduxStoreType} from "./Redux/redux-store";
 import { DialogsContainer } from './components/Dialogs/DialogsContainer';
+import {UsersContainer} from "./components/Users/UsersContainer";
 
 
 export type NavbarItemType = {
@@ -61,6 +62,10 @@ export function App(props: AppPropsType) {
                 <Route
                     path='/profile'
                     render={() => <Profile />}
+                />
+                <Route
+                    path='/users'
+                    render={() => <UsersContainer />}
                 />
                 {/*<Route path='/news' render={() => <Profile profileState={props.state.profilePage} addPost={props.addPost}/>}/>*/}
                 {/*<Route path='/music' render={() => <Profile profileState={props.state.profilePage} addPost={props.addPost}/>}/>*/}

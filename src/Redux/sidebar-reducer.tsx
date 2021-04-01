@@ -13,6 +13,7 @@ const initialState: NavbarItemType[] = [
     {id: 4, address: 'music', name: 'Music'},
     {id: 5, address: 'settings', name: 'Settings'},
     {id: 6, address: 'friends', name: 'Friends'},
+    {id: 7, address: 'users', name: 'Users'},
 ]
 
 export const sidebarReducer = (state: NavbarItemType[] = initialState, action: ActionsTypes): NavbarItemType[] => {
