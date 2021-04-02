@@ -2,20 +2,16 @@ import {ActionsTypes} from "./redux-store";
 import {ChangeEvent} from "react";
 
 export type UserType = {
+    name: string
     id: number
+    uniqueUrlName: string | null
+    photos: {small: string | null, large: string }
+    status: string | null
     followed: boolean
-    avatar: string
-    fullName: string
-    status: string
-    location: {city: string, country: string}
 }
 
 const initialState = {
-    users: [
-        {id: 1, followed: true, avatar: 'https://natelegram.ru/wp-content/uploads/2017/11/anime_art-1-320x320.jpg', fullName: 'Dimych', status: 'Hi, how are you?', location: {city: 'Moscow', country: 'Russia'}},
-        {id: 2, followed: false, avatar: 'https://natelegram.ru/wp-content/uploads/2017/11/anime_art-1-320x320.jpg', fullName: 'Victor', status: 'I am a boss', location: {city: 'Minsk', country: 'Belarus'}},
-        {id: 3, followed: true, avatar: 'https://natelegram.ru/wp-content/uploads/2017/11/anime_art-1-320x320.jpg', fullName: 'Andrew', status: 'I am a boss too', location: {city: 'Kiev', country: 'Ukraine'}},
-    ] as UserType[]
+    users: [] as UserType[]
 }
 
 export type InitialStateUsersType = typeof initialState
