@@ -7,7 +7,7 @@ type NavbarPropsType = {
     sidebar: Array<NavbarItemType>
 }
 
-export function Navbar(props: NavbarPropsType) {
+export const Navbar: React.FC<NavbarPropsType> = (props) => {
     let sidebarElements = props.sidebar.map(s => <NavbarItem id={s.id} address={s.address} name={s.name}  />)
     return (
         <nav className={s.navbar}>

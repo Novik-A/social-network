@@ -10,7 +10,7 @@ type DialogsPropsType = {
     updateMessage: (e: ChangeEvent<HTMLTextAreaElement>) => void
 }
 
-export function Dialogs(props: DialogsPropsType) {
+export const Dialogs: React.FC<DialogsPropsType> = props => {
 
     let dialogsElements = props.state.dialogs.map(d => <DialogItem id={d.id} name={d.name} avatar={d.avatar}/>)
     let messagesElements = props.state.messages.map(m => <Message id={m.id} message={m.message}/>)

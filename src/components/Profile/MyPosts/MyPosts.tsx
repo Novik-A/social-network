@@ -10,7 +10,7 @@ type MyPostsPropsType = {
     addPost: () => void
     newPostText: string
 }
-export function MyPosts(props: MyPostsPropsType) {
+export const MyPosts: React.FC<MyPostsPropsType> = props => {
     const postsElements = props.posts.map(p => <Post id={p.id} message={p.message} likes={p.likes}/>)
 
     const addPost = () => {

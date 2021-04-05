@@ -1,6 +1,6 @@
 import {ActionsTypes} from "./redux-store";
 
-type NavbarItemType = {
+export type NavbarItemType = {
     id: number
     address: string
     name: string

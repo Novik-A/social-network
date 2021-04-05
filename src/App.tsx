@@ -7,6 +7,7 @@ import {Route} from "react-router-dom";
 import {ReduxStoreType} from "./Redux/redux-store";
 import { DialogsContainer } from './components/Dialogs/DialogsContainer';
 import {UsersContainer} from "./components/Users/UsersContainer";
+import {NavbarContainer} from "./components/Navbar/NavbarContainer";
 
 
 export type NavbarItemType = {
@@ -42,18 +43,16 @@ export type StateType = {
     profilePage: PostsType
     dialogsPage: DialogsType
 }
-type AppPropsType = {
-    state: StateType
-}
+
 export type StoreType = {
     store: ReduxStoreType
 }
 
-export function App(props: AppPropsType) {
+export function App() {
     return (
         <div className="App">
             <Header/>
-            <Navbar sidebar={props.state.sidebar}/>
+            <NavbarContainer />
             <div className='App-content'>
                 <Route
                     path='/dialogs'

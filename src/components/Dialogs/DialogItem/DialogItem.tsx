@@ -4,7 +4,7 @@ import s from './../Dialogs.module.css'
 import {DialogItemType} from "../../../App";
 
 
-export function DialogItem(props: DialogItemType) {
+export const DialogItem: React.FC<DialogItemType> = props => {
     return (
         <div className={s.dialog}>
             <img src={props.avatar} alt=""/>

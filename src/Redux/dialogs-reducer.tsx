@@ -27,7 +27,7 @@ const initialState = {
         {id: 4, message: 'Yo'},
         {id: 5, message: 'It\'s my first post'},
         {id: 6, message: 'Hello'},
-        {id: 7, message: 'Gud night'},
+        {id: 7, message: 'Good night'},
     ] as MessageType[],
     newMessageBody: ''
 }
