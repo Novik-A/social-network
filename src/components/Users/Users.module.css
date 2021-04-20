@@ -8,6 +8,11 @@ div {
     border-radius: 50%;
 }
 
+.pages {
+    color: darkslategray;
+}
+
 .selectedPage {
-    font-weight: bolder;
+    font-weight: bold;
+    color: darkgoldenrod;
 }

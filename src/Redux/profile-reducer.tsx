@@ -13,7 +13,8 @@ const initialState = {
         {id: 2, message: 'It\'s my first post', likes: 3},
         {id: 3, message: 'Hello, hello', likes: 10},
     ] as PostType[],
-    newPostText: 'IT'
+    newPostText: 'IT',
+    profile: null
 }
 
 export type InitialStatePostsType = typeof initialState
@@ -28,12 +29,15 @@ export const profileReducer = (state: InitialStatePostsType = initialState, acti
             }
         case "UPDATE-NEW-POST-TEXT":
             return {...state, newPostText: action.newText}
+        case "SET_USER_PROFILE":
+            return {...state, profile: action.profile}
         default:
             return state
     }
 }
 
 export const addPostActionCreator = () => ({type: "ADD-POST"}) as const
+export const setUserProfile = (profile: any) => ({type: "SET_USER_PROFILE", profile}) as const
 export const updatePostActionCreator = (e: ChangeEvent<HTMLTextAreaElement>) => (
     {type: "UPDATE-NEW-POST-TEXT", newText: (e.currentTarget.value)}
 ) as const
