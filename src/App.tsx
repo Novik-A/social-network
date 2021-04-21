@@ -1,12 +1,12 @@
 import React from 'react';
 import './App.css';
-import {Header} from "./components/Header/Header";
 import {Route} from "react-router-dom";
 import {ReduxStoreType} from "./Redux/redux-store";
 import { DialogsContainer } from './components/Dialogs/DialogsContainer';
 import {NavbarContainer} from "./components/Navbar/NavbarContainer";
 import UsersContainer from "./components/Users/UsersContainer";
 import ProfileContainer from "./components/Profile/ProfileContainer";
+import HeaderContainer from "./components/Header/HeaderContainer";
 
 
 export type NavbarItemType = {
@@ -50,7 +50,7 @@ export type StoreType = {
 export function App() {
     return (
         <div className="App">
-            <Header/>
+            <HeaderContainer />
             <NavbarContainer />
             <div className='App-content'>
                 <Route
