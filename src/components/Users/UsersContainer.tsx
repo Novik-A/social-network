@@ -15,19 +15,25 @@ import axios from "axios";
 import {Users} from "./Users";
 import {Preloader} from "../common/Preloader/Preloader";
 
-type UsersContainerPropsType = {
-    users: UserType[]
-    pageSize: number
-    totalUsersCount: number
-    currentPage: number
-    isFetching: boolean
-    follow: (userID: number) => void
-    unfollow: (userID: number) => void
-    setUsers: (users: UserType[]) => void
-    setCurrentPage: (currentPage: number) => void
-    setTotalUsersCount: (totalCount: number) => void
-    toggleIsFetching: (isFetching: boolean) => void
-}
+type MapStatePropsType =
+    {
+        users: UserType[]
+        pageSize: number
+        totalUsersCount: number
+        currentPage: number
+        isFetching: boolean
+    }
+type MapDispatchPropsType =
+    {
+        follow: (userID: number) => void
+        unfollow: (userID: number) => void
+        setUsers: (users: UserType[]) => void
+        setCurrentPage: (currentPage: number) => void
+        setTotalUsersCount: (totalCount: number) => void
+        toggleIsFetching: (isFetching: boolean) => void
+    }
+
+type UsersContainerPropsType = MapStatePropsType & MapDispatchPropsType
 
 class UsersContainer extends React.Component<UsersContainerPropsType> {
     componentDidMount() {
@@ -62,24 +68,6 @@ class UsersContainer extends React.Component<UsersContainerPropsType> {
         </>
     }
 }
-
-type MapStatePropsType =
-    {
-        users: UserType[]
-        pageSize: number
-        totalUsersCount: number
-        currentPage: number
-        isFetching: boolean
-    }
-// type MapDispatchPropsType =
-//     {
-//         follow: (userID: number) => void
-//         unfollow: (userID: number) => void
-//         setUsers: (users: UserType[]) => void
-//         setCurrentPage: (currentPage: number) => void
-//         setTotalUsersCount: (totalCount: number) => void
-//         toggleIsFetching: (isFetching: boolean) => void
-//     }
 
 const mapStateToProps = (state: AppStateType): MapStatePropsType => {
     return {
