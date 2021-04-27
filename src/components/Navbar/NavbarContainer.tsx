@@ -1,9 +1,9 @@
 import React from "react";
 import {connect} from "react-redux";
 import { Dispatch } from "redux";
-import {AppStateType} from "../../Redux/redux-store";
+import {AppStateType} from "../../redux/redux-store";
 import {Navbar} from "./Navbar";
-import {NavbarItemType} from "../../Redux/sidebar-reducer";
+import {NavbarItemType} from "../../redux/sidebar-reducer";
 
 type MapStatePropsType = {
     sidebar:  NavbarItemType[]

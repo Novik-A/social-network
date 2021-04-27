@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import {Route} from "react-router-dom";
-import {ReduxStoreType} from "./Redux/redux-store";
+import {ReduxStoreType} from "./redux/redux-store";
 import { DialogsContainer } from './components/Dialogs/DialogsContainer';
 import {NavbarContainer} from "./components/Navbar/NavbarContainer";
 import UsersContainer from "./components/Users/UsersContainer";

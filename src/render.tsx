@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-// import {addPost, updateNewPostText} from "./Redux/state";
+// import {addPost, updateNewPostText} from "./redux/state";
 // import {App, StateType} from "./App";
 // import {BrowserRouter} from "react-router-dom";
 //

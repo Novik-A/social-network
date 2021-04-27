@@ -3,11 +3,11 @@ import {
     addPostActionCreator,
     PostType,
     updatePostActionCreator
-} from "../../../Redux/profile-reducer";
+} from "../../../redux/profile-reducer";
 import {MyPosts} from "./MyPosts";
 import {connect} from "react-redux";
 import { Dispatch } from "redux";
-import {AppStateType} from "../../../Redux/redux-store";
+import {AppStateType} from "../../../redux/redux-store";
 
 type MapStatePropsType = {
     posts: PostType[]
