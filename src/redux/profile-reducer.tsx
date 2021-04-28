@@ -1,5 +1,7 @@
 import {ActionsTypes} from "./redux-store";
 import {ChangeEvent} from "react";
+import {ThunkType} from "./users-reducer";
+import {usersAPI} from "../api/api";
 
 export type PostType = {
     id: number
@@ -41,3 +43,11 @@ export const setUserProfile = (profile: any) => ({type: "SET_USER_PROFILE", prof
 export const updatePostActionCreator = (e: ChangeEvent<HTMLTextAreaElement>) => (
     {type: "UPDATE-NEW-POST-TEXT", newText: (e.currentTarget.value)}
 ) as const
+
+export const getUserProfile = (userID: string): ThunkType => {
+    return (dispatch) => {
+        usersAPI.getProfile(userID).then(data => {
+            dispatch(setUserProfile(data))
+        })
+    }
+}
