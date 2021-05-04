@@ -5,12 +5,16 @@ import {MyPostsContainer} from "./MyPosts/MyPostsContainer";
 
 export type ProfilePropsType = {
     profile: any
+    status: string
+    updateStatus: (status: string) => void
 }
 
 export const Profile = (props: ProfilePropsType) => {
     return (
         <div>
-            <ProfileInfo profile={props.profile}/>
+            <ProfileInfo profile={props.profile}
+                         status={props.status}
+                         updateStatus={props.updateStatus}/>
             <MyPostsContainer />
         </div>
     )

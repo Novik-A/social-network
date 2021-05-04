@@ -34,6 +34,7 @@ export const getAuthUserData = (): ThunkType => {
         authAPI.me().then(data => {
             if (data.resultCode === 0) {
                 let {id, email, login} = data.data
+                // @ts-ignore
                 dispatch(setUserData(id, email, login))
             }
         })

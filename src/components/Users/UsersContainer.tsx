@@ -23,8 +23,8 @@ type MapStatePropsType =
     }
 type MapDispatchPropsType =
     {
-        follow: (userID: number) => void
-        unfollow: (userID: number) => void
+        follow: (userId: number) => void
+        unfollow: (userId: number) => void
         setCurrentPage: (currentPage: number) => void
         getUsers: (currentPage: number, pageSize: number) => void
     }
