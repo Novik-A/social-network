@@ -1,7 +1,7 @@
 import {applyMiddleware, combineReducers, createStore } from "redux";
-import {addPostActionCreator, profileReducer, setUserProfile, updatePostActionCreator, setStatus} from "./profile-reducer";
+import {addPostActionCreator, profileReducer, setUserProfile, setStatus} from "./profile-reducer";
 import {sidebarReducer} from "./sidebar-reducer";
-import {dialogsReducer, sendMessageActionCreator, updateMessageActionCreator} from "./dialogs-reducer";
+import {dialogsReducer, sendMessageActionCreator} from "./dialogs-reducer";
 import {
     setCurrentPage,
     setTotalUsersCount,
@@ -15,9 +15,7 @@ import thunk from "redux-thunk";
 import {reducer as formReducer} from "redux-form";
 
 export type ActionsTypes = ReturnType<typeof addPostActionCreator> |
-    ReturnType<typeof updatePostActionCreator> |
     ReturnType<typeof sendMessageActionCreator> |
-    ReturnType<typeof updateMessageActionCreator> |
     ReturnType<typeof followSuccessful> | ReturnType<typeof unfollowSuccessful> |
     ReturnType<typeof setUsers> | ReturnType<typeof setCurrentPage> |
     ReturnType<typeof setTotalUsersCount> | ReturnType<typeof toggleIsFetching> |

@@ -1,5 +1,4 @@
 import {ActionsTypes} from "./redux-store";
-import {ChangeEvent} from "react";
 
 type DialogItemType = {
     id: number
@@ -28,29 +27,22 @@ const initialState = {
         {id: 5, message: 'It\'s my first post'},
         {id: 6, message: 'Hello'},
         {id: 7, message: 'Good night'},
-    ] as MessageType[],
-    newMessageBody: ''
+    ] as MessageType[]
 }
 
 export type InitialStateDialogsType = typeof initialState
 
 export const dialogsReducer = (state: InitialStateDialogsType = initialState, action: ActionsTypes): InitialStateDialogsType => {
     switch (action.type) {
-        case "UPDATE-NEW-MESSAGE-BODY":
-            return {...state, newMessageBody: action.body}
         case "SEND-MESSAGE":
-            const body = state.newMessageBody
+            const body = action.newMessageBody
             return {
                 ...state,
                 messages: [...state.messages, {id: 6, message: body}],
-                newMessageBody: ''
             }
         default:
             return state
     }
 }
 
-export const sendMessageActionCreator = () => ({type: "SEND-MESSAGE"}) as const
-export const updateMessageActionCreator = (e: ChangeEvent<HTMLTextAreaElement>) => (
-    {type: "UPDATE-NEW-MESSAGE-BODY", body: (e.currentTarget.value)}
-) as const
+export const sendMessageActionCreator = (newMessageBody: string) => ({type: "SEND-MESSAGE", newMessageBody}) as const

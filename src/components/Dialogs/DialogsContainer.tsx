@@ -1,8 +1,7 @@
 import React, {ChangeEvent} from "react";
 import {
     InitialStateDialogsType,
-    sendMessageActionCreator,
-    updateMessageActionCreator
+    sendMessageActionCreator
 } from "../../redux/dialogs-reducer";
 import {Dialogs} from "./Dialogs";
 import {connect} from "react-redux";
@@ -15,8 +14,7 @@ type MapStatePropsType = {
     state: InitialStateDialogsType
 }
 type MapDispatchPropsType = {
-    sendMessage: () => void
-    updateMessage: (e: ChangeEvent<HTMLTextAreaElement>) => void
+    sendMessage: (newMessageBody: string) => void
 }
 
 const mapStateToProps = (state: AppStateType): MapStatePropsType => {
@@ -26,11 +24,8 @@ const mapStateToProps = (state: AppStateType): MapStatePropsType => {
 }
 const mapDispatchToProps = (dispatch: Dispatch): MapDispatchPropsType => {
     return {
-        sendMessage: () => {
-            dispatch(sendMessageActionCreator())
-        },
-        updateMessage: (e: ChangeEvent<HTMLTextAreaElement>) => {
-            dispatch(updateMessageActionCreator(e))
+        sendMessage: (newMessageBody: string) => {
+            dispatch(sendMessageActionCreator(newMessageBody))
         }
     }
 }

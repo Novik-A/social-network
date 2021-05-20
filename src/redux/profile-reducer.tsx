@@ -1,10 +1,8 @@
 import {ActionsTypes} from "./redux-store";
-import {ChangeEvent} from "react";
 import {ThunkType} from "./users-reducer";
 import {profileAPI} from "../api/api";
 
 const ADD_POST = 'ADD_POST'
-const UPDATE_NEW_POST_TEXT = 'UPDATE_NEW_POST_TEXT'
 const SET_USER_PROFILE = 'SET_USER_PROFILE'
 const SET_STATUS = 'SET_STATUS'
 
@@ -20,7 +18,6 @@ const initialState = {
         {id: 2, message: 'It\'s my first post', likes: 3},
         {id: 3, message: 'Hello, hello', likes: 10},
     ] as PostType[],
-    newPostText: 'IT',
     profile: {
         "aboutMe": '',
         "contacts": {
@@ -42,7 +39,7 @@ const initialState = {
             "large": ''
         }
     },
-    status: '555'
+    status: '==='
 }
 
 export type InitialStatePostsType = typeof initialState
@@ -52,11 +49,8 @@ export const profileReducer = (state: InitialStatePostsType = initialState, acti
         case ADD_POST:
             return {
                 ...state,
-                posts: [...state.posts, {id: 17, message: state.newPostText, likes: 1}],
-                newPostText: ''
+                posts: [...state.posts, {id: 17, message: action.newPostText, likes: 1}],
             }
-        case UPDATE_NEW_POST_TEXT:
-            return {...state, newPostText: action.newText}
         case SET_USER_PROFILE:
             return {...state, profile: action.profile}
         case SET_STATUS:
@@ -66,12 +60,9 @@ export const profileReducer = (state: InitialStatePostsType = initialState, acti
     }
 }
 
-export const addPostActionCreator = () => ({type: ADD_POST}) as const
+export const addPostActionCreator = (newPostText: string) => ({type: ADD_POST, newPostText}) as const
 export const setUserProfile = (profile: any) => ({type: SET_USER_PROFILE, profile}) as const
 export const setStatus = (status: string) => ({type: SET_STATUS, status}) as const
-export const updatePostActionCreator = (e: ChangeEvent<HTMLTextAreaElement>) => (
-    {type: UPDATE_NEW_POST_TEXT, newText: (e.currentTarget.value)}
-) as const
 
 export const getUserProfile = (userId: string): ThunkType => {
     return (dispatch) => {
