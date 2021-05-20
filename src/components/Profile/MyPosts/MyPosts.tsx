@@ -4,7 +4,6 @@ import {Post} from "./Post/Post";
 import {PostType} from "../../../App";
 import {Field, InjectedFormProps, reduxForm} from "redux-form";
 
-
 type MyPostsPropsType = {
     posts: Array<PostType>
     addPost: (newPostText: string) => void

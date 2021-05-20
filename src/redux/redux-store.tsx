@@ -14,6 +14,7 @@ import {authReducer, setUserData} from "./auth-reducer";
 import thunk from "redux-thunk";
 import {reducer as formReducer} from "redux-form";
 
+
 export type ActionsTypes = ReturnType<typeof addPostActionCreator> |
     ReturnType<typeof sendMessageActionCreator> |
     ReturnType<typeof followSuccessful> | ReturnType<typeof unfollowSuccessful> |

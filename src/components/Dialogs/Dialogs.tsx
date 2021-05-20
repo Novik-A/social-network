@@ -5,6 +5,7 @@ import { Message } from "./Message/Message";
 import {InitialStateDialogsType} from "../../redux/dialogs-reducer";
 import {InjectedFormProps, Field, reduxForm} from "redux-form";
 
+
 type DialogsPropsType = {
     state: InitialStateDialogsType
     sendMessage: (newMessageBody: string) => void
