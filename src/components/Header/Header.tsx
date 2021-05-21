@@ -8,8 +8,9 @@ export const Header = (props: HeaderContainerPropsType) => {
         <img src={'https://clipartstation.com/wp-content/uploads/2018/10/logo-clipart-png.png'}
              className={s.logo} alt="logo"/>
         <div className={s.loginBlock}>
-            {props.isAuth ? props.login :
-            <NavLink to={'/login'}>Login</NavLink>
+            {props.isAuth
+                ? <div>{props.login} - <button onClick={props.logout}>Log out</button></div>
+                : <NavLink to={'/login'}>Login</NavLink>
             }
         </div>
     </header>
