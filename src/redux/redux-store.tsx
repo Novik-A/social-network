@@ -12,16 +12,19 @@ import {
 } from "./users-reducer";
 import {authReducer, setUserData} from "./auth-reducer";
 import thunk from "redux-thunk";
-import {reducer as formReducer} from "redux-form";
+import {reducer as formReducer, stopSubmit} from "redux-form";
+import {appReducer, initializedSuccess} from "./app-reducer";
 
 
-export type ActionsTypes = ReturnType<typeof addPostActionCreator> |
+export type ActionsTypes = ReturnType<typeof initializedSuccess> |
+    ReturnType<typeof addPostActionCreator> |
     ReturnType<typeof sendMessageActionCreator> |
     ReturnType<typeof followSuccessful> | ReturnType<typeof unfollowSuccessful> |
     ReturnType<typeof setUsers> | ReturnType<typeof setCurrentPage> |
     ReturnType<typeof setTotalUsersCount> | ReturnType<typeof toggleIsFetching> |
     ReturnType<typeof setUserProfile> | ReturnType<typeof setUserData> |
     ReturnType<typeof toggleFollowingProgress> | ReturnType<typeof setStatus>
+    // | ReturnType<typeof stopSubmit>
 
 let rootReducer = combineReducers({
     sidebar: sidebarReducer,
@@ -29,6 +32,7 @@ let rootReducer = combineReducers({
     dialogsPage: dialogsReducer,
     usersPage: usersReducer,
     auth: authReducer,
+    app: appReducer,
     form: formReducer
 })
 

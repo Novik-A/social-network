@@ -1,15 +1,16 @@
 import {ActionsTypes} from "./redux-store";
 import {authAPI} from "../api/api";
 import {ThunkType} from "./users-reducer";
+import {stopSubmit} from "redux-form";
 
 const SET_USER_DATA = 'SET_USER_DATA'
 
 
 const initialState = {
-    id: 0,
-    email: '',
-    login: '',
-    isAuth: false
+        id: 0,
+        email: '',
+        login: '',
+        isAuth: false
 }
 
 export type InitialStateUsersType = typeof initialState
@@ -45,6 +46,10 @@ export const login = (email: string, password: string, rememberMe: boolean): Thu
             if (data.resultCode === 0) {
                 dispatch(getAuthUserData())
             }
+            // else {
+            //     const message = data.messages.length > 0 ? data.messages[0] : 'Some error'
+            //     dispatch(stopSubmit('login', {_error: message} ))
+            // }
         })
     }
 }
