@@ -43,32 +43,4 @@ export const ProfileStatusWithHooks: React.FC<ProfileStatusPropsType> = (props) 
     </>
 
 }
-    // state = {
-    //     editMode: false,
-    //     status: this.props.status
-    // }
-    // activateEditMode = () => {
-    //     this.setState({
-    //         editMode: true
-    //     }  )
-    // }
-    // deactivateEditMode = () => {
-    //     this.setState({
-    //         editMode: false
-    //     }  )
-    //     this.props.updateStatus(this.state.status)
-    // }
-    // onStatusChange = () => {
-    //     this.setState( {
-    //         status:
-    //     })
-    // }
-    // componentDidUpdate(prevProps: Readonly<ProfileStatusPropsType>, prevState: Readonly<{}>, snapshot?: any) {
-    //     if (prevProps.status !== this.props.status) {
-    //         this.setState({
-    //             status: this.props.status
-    //         })
-    //     }
-    // }
-
-
+    

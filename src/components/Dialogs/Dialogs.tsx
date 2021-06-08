@@ -6,17 +6,12 @@ import {InitialStateDialogsType} from "../../redux/dialogs-reducer";
 import AddMessageForm, {FormDataType} from "./AddMessageForm";
 
 
-type DialogsPropsType = {
-    state: InitialStateDialogsType
-    sendMessage: (newMessageBody: string) => void
-}
+export const Dialogs: React.FC<DialogsPropsType> = ({state, sendMessage}) => {
 
-export const Dialogs: React.FC<DialogsPropsType> = props => {
-
-    let dialogsElements = props.state.dialogs.map(d => <DialogItem id={d.id} name={d.name} avatar={d.avatar}/>)
-    let messagesElements = props.state.messages.map(m => <Message id={m.id} message={m.message}/>)
+    const dialogsElements = state.dialogs.map(d => <DialogItem id={d.id} name={d.name} avatar={d.avatar}/>)
+    const messagesElements = state.messages.map(m => <Message id={m.id} message={m.message}/>)
     const addNewMessage = (formData: FormDataType) => {
-        props.sendMessage(formData.newMessageBody)
+        sendMessage(formData.newMessageBody)
     }
     return (
         <div className={s.dialogs}>
@@ -29,4 +24,9 @@ export const Dialogs: React.FC<DialogsPropsType> = props => {
             </div>
         </div>
     )
+}
+
+type DialogsPropsType = {
+    state: InitialStateDialogsType
+    sendMessage: (newMessageBody: string) => void
 }

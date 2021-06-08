@@ -14,11 +14,11 @@ export type LoginFormDataType = {
     password: string
     rememberMe: boolean
 }
-type LoginFormDataTypeKeys = Extract<keyof LoginFormDataType, string>
+// type LoginFormDataTypeKeys = Extract<keyof LoginFormDataType, string>
 
-const LoginForm: React.FC<InjectedFormProps<LoginFormDataType>> = (props) => {
+const LoginForm: React.FC<InjectedFormProps<LoginFormDataType>> = ({handleSubmit, error}) => {
     return (
-        <form onSubmit={props.handleSubmit}>
+        <form onSubmit={handleSubmit}>
             <div>
                 <Field placeholder={'Email'} name={'email'}
                        validate={[required]}
@@ -32,8 +32,8 @@ const LoginForm: React.FC<InjectedFormProps<LoginFormDataType>> = (props) => {
             <div>
                 <Field type={'checkbox'} name={'rememberMe'} component={Input}/>remember me
             </div>
-            { props.error && <div className={styles.formSummaryError}>
-                {props.error}
+            {error && <div className={styles.formSummaryError}>
+                {error}
             </div>
             }
             <div>

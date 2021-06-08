@@ -1,20 +1,20 @@
 import React from "react";
-import s from './Profile.module.css'
 import {ProfileInfo} from "./ProfileInfo/ProfileInfo";
 import {MyPostsContainer} from "./MyPosts/MyPostsContainer";
+import {ProfileType} from "../../api/api";
 
 export type ProfilePropsType = {
-    profile: any
+    profile: ProfileType
     status: string
     updateStatus: (status: string) => void
 }
 
-export const Profile = (props: ProfilePropsType) => {
+export const Profile: React.FC<ProfilePropsType> = ({profile, status, updateStatus}) => {
     return (
         <div>
-            <ProfileInfo profile={props.profile}
-                         status={props.status}
-                         updateStatus={props.updateStatus}/>
+            <ProfileInfo profile={profile}
+                         status={status}
+                         updateStatus={updateStatus}/>
             <MyPostsContainer />
         </div>
     )

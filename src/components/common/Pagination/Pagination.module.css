@@ -1,0 +1,8 @@
+.selectedPage {
+    font-weight: bold;
+    color: darkgoldenrod;
+}
+
+.pages {
+    color: darkslategray;
+}

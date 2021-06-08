@@ -8,7 +8,10 @@ type NavbarPropsType = {
 }
 
 export const Navbar: React.FC<NavbarPropsType> = (props) => {
-    let sidebarElements = props.sidebar.map(s => <NavbarItem id={s.id} address={s.address} name={s.name}  />)
+    const sidebarElements = props.sidebar.map(s => <NavbarItem id={s.id}
+                                                             address={s.address}
+                                                             name={s.name}
+                                                             key={s.id} />)
     return (
         <nav className={s.navbar}>
             {sidebarElements}

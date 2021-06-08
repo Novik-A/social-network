@@ -6,16 +6,15 @@ import userPhoto from "../../../assets/images/avatar.png";
 import {ProfileStatusWithHooks} from "./ProfileStatusWithHooks";
 
 
-export const ProfileInfo = (props: ProfilePropsType) => {
-    if (!props.profile) {
+export const ProfileInfo: React.FC<ProfilePropsType> = ({profile, status, updateStatus}) => {
+    if (!profile) {
         return <Preloader />
     }
     return (
         <div>
-            {/*<img className={s.bg} src={"https://i.pinimg.com/originals/fd/ba/44/fdba444cffb79e04129e80a43e9d0f34.jpg"} alt=""/>*/}
             <div className={s.description}>
-                <img src={props.profile.photos.large !== null ? props.profile.photos.large : userPhoto}/>
-                <ProfileStatusWithHooks status={props.status} updateStatus={props.updateStatus}/>
+                <img src={profile.photos.large !== null ? profile.photos.large : userPhoto} alt={'Avatar'}/>
+                <ProfileStatusWithHooks status={status} updateStatus={updateStatus}/>
             </div>
         </div>
     )
