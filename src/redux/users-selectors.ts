@@ -17,6 +17,10 @@ export const getCurrentPage = (state: AppStateType): number => {
     return state.usersPage.currentPage
 }
 
+export const getPortionSize = (state: AppStateType): number => {
+    return state.usersPage.portionSize
+}
+
 export const getIsFetching = (state: AppStateType): boolean => {
     return state.usersPage.isFetching
 }

@@ -1,8 +1,13 @@
-.selectedPage {
-    font-weight: bold;
-    color: darkgoldenrod;
+.pagination {
+    margin: 10px;
 }
 
-.pages {
-    color: darkslategray;
+.pageNumber {
+    padding: 2px;
+    border: 1px solid grey;
 }
+.selectedPage {
+    font-weight: bold;
+    border: 2px solid black;
+}
+

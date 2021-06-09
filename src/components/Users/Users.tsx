@@ -12,14 +12,16 @@ type UsersPropsType = {
     follow: (userID: number) => void
     unfollow: (userID: number) => void
     onPageChanged: (pageNumber: number) => void
+    portionSize: number
 }
 
-export const Users: React.FC<UsersPropsType> = ({pageSize, totalUsersCount, currentPage, onPageChanged, ...props}) => {
+export const Users: React.FC<UsersPropsType> = ({pageSize, totalUsersCount, currentPage, onPageChanged, portionSize, ...props}) => {
     return <div>
         <Pagination pageSize={pageSize}
-                    totalUsersCount={totalUsersCount}
+                    totalItemsCount={totalUsersCount}
                     currentPage={currentPage}
-                    onPageChanged={onPageChanged}/>
+                    onPageChanged={onPageChanged}
+                    portionSize={portionSize}/>
         {props.users.map(u => <User user={u}
                                     followingInProgress={props.followingInProgress}
                                     follow={props.follow}
