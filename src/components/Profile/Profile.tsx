@@ -4,17 +4,21 @@ import {MyPostsContainer} from "./MyPosts/MyPostsContainer";
 import {ProfileType} from "../../api/api";
 
 export type ProfilePropsType = {
+    isOwner: boolean
     profile: ProfileType
     status: string
     updateStatus: (status: string) => void
+    savePhoto: (file: string) => void
 }
 
-export const Profile: React.FC<ProfilePropsType> = ({profile, status, updateStatus}) => {
+export const Profile: React.FC<ProfilePropsType> = ({isOwner,profile, status, updateStatus, savePhoto}) => {
     return (
         <div>
-            <ProfileInfo profile={profile}
+            <ProfileInfo isOwner={isOwner}
+                         profile={profile}
                          status={status}
-                         updateStatus={updateStatus}/>
+                         updateStatus={updateStatus}
+                         savePhoto={savePhoto}/>
             <MyPostsContainer />
         </div>
     )

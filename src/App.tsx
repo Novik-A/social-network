@@ -1,6 +1,6 @@
 import React, {lazy, Suspense} from 'react';
 import './App.css';
-import {BrowserRouter, Route, Switch, withRouter} from "react-router-dom";
+import {HashRouter, Route, Switch, withRouter} from "react-router-dom";
 import store, {AppStateType, ReduxStoreType} from "./redux/redux-store";
 // import DialogsContainer from './components/Dialogs/DialogsContainer';
 import {NavbarContainer} from "./components/Navbar/NavbarContainer";
@@ -69,11 +69,11 @@ const AppContainer = compose<React.ComponentType>(
 
 export const AppForTest: React.FC = () => {
     return <>
-        <BrowserRouter>
+        <HashRouter>
             <Provider store={store}>
                 <AppContainer/>
             </Provider>
-        </BrowserRouter>
+        </HashRouter>
     </>
 }
 

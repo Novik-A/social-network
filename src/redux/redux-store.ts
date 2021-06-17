@@ -1,6 +1,6 @@
 import {applyMiddleware, combineReducers, createStore } from "redux";
 import { composeWithDevTools } from 'redux-devtools-extension';
-import {addPostAC, profileReducer, setUserProfile, setStatus} from "./profile-reducer";
+import {addPostAC, profileReducer, setUserProfile, setStatus, savePhotoSuccess} from "./profile-reducer";
 import {sidebarReducer} from "./sidebar-reducer";
 import {dialogsReducer, sendMessageAC} from "./dialogs-reducer";
 import {
@@ -24,7 +24,8 @@ export type ActionsTypes = ReturnType<typeof initializedSuccess> |
     ReturnType<typeof setUsers> | ReturnType<typeof setCurrentPage> |
     ReturnType<typeof setTotalUsersCount> | ReturnType<typeof toggleIsFetching> |
     ReturnType<typeof setUserProfile> | ReturnType<typeof setAuthUserData> |
-    ReturnType<typeof toggleFollowingProgress> | ReturnType<typeof setStatus>
+    ReturnType<typeof toggleFollowingProgress> | ReturnType<typeof setStatus> |
+    ReturnType<typeof savePhotoSuccess>
 
 let rootReducer = combineReducers({
     sidebar: sidebarReducer,

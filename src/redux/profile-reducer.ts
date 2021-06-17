@@ -6,6 +6,7 @@ import {profileAPI} from "../api/api";
 const ADD_POST = 'profile/ADD_POST'
 const SET_USER_PROFILE = 'profile/SET_USER_PROFILE'
 const SET_STATUS = 'profile/SET_STATUS'
+const SAVE_PHOTO_SUCCESS = 'profile/SAVE_PHOTO_SUCCESS'
 
 const initialState = {
     posts: [
@@ -48,6 +49,8 @@ export const profileReducer = (state: InitialStatePostsType = initialState, acti
             return {...state, profile: action.profile}
         case SET_STATUS:
             return {...state, status: action.status}
+        case SAVE_PHOTO_SUCCESS:
+            return {...state, profile: {...state.profile, photos: action.photos}}
         default:
             return state
     }
@@ -57,6 +60,7 @@ export const profileReducer = (state: InitialStatePostsType = initialState, acti
 export const addPostAC = (newPostText: string) => ({type: ADD_POST, newPostText}) as const
 export const setUserProfile = (profile: any) => ({type: SET_USER_PROFILE, profile}) as const
 export const setStatus = (status: string) => ({type: SET_STATUS, status}) as const
+export const savePhotoSuccess = (photos: PhotosType) => ({type: SAVE_PHOTO_SUCCESS, photos}) as const
 
 // thunks
 export const getUserProfile = (userId: string): ThunkType => async (dispatch) => {
@@ -73,6 +77,12 @@ export const updateStatus = (status: string): ThunkType => async (dispatch) => {
         dispatch(setStatus(status))
     }
 }
+export const savePhoto = (file: string): ThunkType => async (dispatch) => {
+    const response = await profileAPI.savePhoto(file)
+    if (response.data.resultCode === 0) {
+        dispatch(savePhotoSuccess(response.data.data.photos))
+    }
+}
 
 // types
 export type PostType = {
@@ -82,3 +92,8 @@ export type PostType = {
 }
 
 export type InitialStatePostsType = typeof initialState
+
+type PhotosType = {
+    "small": string
+    "large": string
+}
