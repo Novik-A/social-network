@@ -32,7 +32,7 @@ export const setAuthUserData = (id: number = 0, email: string = '', login: strin
     type: SET_USER_DATA,
     payload: {id, email, login, isAuth}
 }) as const
-export const getCaptchaUrlSuccess = (captchaUrl: string) => ({
+export const getCaptchaUrlSuccess = (captchaUrl: string | null) => ({
     type: GET_CAPTCHA_URL_SUCCESS,
     payload: {captchaUrl}
 }) as const
@@ -50,8 +50,9 @@ export const login = (email: string, password: string, rememberMe: boolean, capt
         const response = await authAPI.login(email, password, rememberMe, captcha)
         if (response.data.resultCode === 0) {
             dispatch(getAuthUserData())
+            dispatch(getCaptchaUrlSuccess(null))
         } else {
-            if (response.data.resultCode === 10) {
+            if (response.data.fieldsErrors[0] && response.data.fieldsErrors[0].field === 'captcha') {
                 dispatch(getCaptchaUrl())
             }
             const message = response.data.messages.length > 0 ? response.data.messages[0] : 'Some error'

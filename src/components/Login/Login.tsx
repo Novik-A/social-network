@@ -38,7 +38,7 @@ const LoginForm: React.FC<InjectedFormProps<LoginFormDataType, LoginFormOwnProps
                 <Field type={'checkbox'} name={'rememberMe'} component={Input}/>remember me
             </div>
             {captchaUrl && <img src={captchaUrl}/>}
-            {captchaUrl && <Field placeholder={'Symbols from image'} name={'captcha'}
+            {captchaUrl && <Field placeholder={'Symbols from image'} name={'captchaUrl'}
                                   validate={[required]}
                                   component={Input}/>}
             {error && <div className={styles.formSummaryError}>

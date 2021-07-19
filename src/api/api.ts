@@ -68,6 +68,10 @@ type ResponseType = {
         email?: string
         login?: string
     }
+    fieldsErrors: [ null |
+        {field: string
+        error: string}
+    ]
 }
 type PhotoResponseType = {
     resultCode: number
