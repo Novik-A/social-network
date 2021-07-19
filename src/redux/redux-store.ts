@@ -11,7 +11,7 @@ import {
     toggleFollowingProgress,
     usersReducer, followSuccessful, unfollowSuccessful
 } from "./users-reducer";
-import {authReducer, setAuthUserData} from "./auth-reducer";
+import {authReducer, getCaptchaUrlSuccess, setAuthUserData} from "./auth-reducer";
 import thunk from "redux-thunk";
 import {reducer as formReducer} from "redux-form";
 import {appReducer, initializedSuccess} from "./app-reducer";
@@ -25,7 +25,7 @@ export type ActionsTypes = ReturnType<typeof initializedSuccess> |
     ReturnType<typeof setTotalUsersCount> | ReturnType<typeof toggleIsFetching> |
     ReturnType<typeof setUserProfile> | ReturnType<typeof setAuthUserData> |
     ReturnType<typeof toggleFollowingProgress> | ReturnType<typeof setStatus> |
-    ReturnType<typeof savePhotoSuccess>
+    ReturnType<typeof savePhotoSuccess> | ReturnType<typeof getCaptchaUrlSuccess>
 
 let rootReducer = combineReducers({
     sidebar: sidebarReducer,

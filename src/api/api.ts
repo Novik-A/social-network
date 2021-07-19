@@ -45,11 +45,17 @@ export const authAPI = {
     me () {
         return instance.get<ResponseType>(`auth/me`)
     },
-    login (email: string, password: string, rememberMe = false) {
-        return instance.post<ResponseType>(`auth/login`, {email, password, rememberMe})
+    login (email: string, password: string, rememberMe = false, captcha: string | null = null) {
+        return instance.post<ResponseType>(`auth/login`, {email, password, rememberMe, captcha})
     },
     logout () {
         return instance.delete<ResponseType>(`auth/login`)
+    }
+}
+
+export const securityAPI = {
+    getCaptchaUrl () {
+        return instance.get<CaptchaResponseType>(`security/get-captcha-url`)
     }
 }
 
@@ -72,6 +78,9 @@ type PhotoResponseType = {
             large: string
         }
     }
+}
+type CaptchaResponseType = {
+    url: string
 }
 export type ProfileType = {
     "aboutMe": string
