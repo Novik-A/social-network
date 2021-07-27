@@ -11,9 +11,7 @@ export const ProfileInfo: React.FC<ProfilePropsType> = ({isOwner,profile, status
         return <Preloader />
     }
     const onMainPhotoSelected = (e: ChangeEvent<HTMLInputElement>) => {
-        // @ts-ignore
-        if (e.target.files.length) {
-            // @ts-ignore
+        if (e.target.files && e.target.files.length) {
             savePhoto(e.target.files[0])
         }
     }

@@ -70,7 +70,7 @@ type MapDispatchPropsType =
         getUserProfile: (userId: string) => void
         getStatus: (userId: string) => void
         updateStatus: (status: string) => void
-        savePhoto: (file: string) => void
+        savePhoto: (file: string | File) => void
     }
 type PathParamsType = {
     userId: string

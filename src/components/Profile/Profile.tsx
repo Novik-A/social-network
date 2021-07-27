@@ -8,7 +8,7 @@ export type ProfilePropsType = {
     profile: ProfileType
     status: string
     updateStatus: (status: string) => void
-    savePhoto: (file: string) => void
+    savePhoto: (file: string | File) => void
 }
 
 export const Profile: React.FC<ProfilePropsType> = ({isOwner,profile, status, updateStatus, savePhoto}) => {
