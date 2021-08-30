@@ -11,7 +11,7 @@ type MyPostsPropsType = {
     addPost: (newPostText: string) => void
     }
 export const MyPosts: React.FC<MyPostsPropsType> = React.memo(props => {
-    const postsElements = props.posts.map(p => <Post id={p.id} message={p.message} likes={p.likes}/>)
+    const postsElements = props.posts.map(p => <Post key={p.id} id={p.id} message={p.message} likes={p.likes}/>)
 
     const addPost = (formData: FormDataType) => {
             props.addPost(formData.newPostText)
