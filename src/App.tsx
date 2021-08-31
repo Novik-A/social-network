@@ -1,7 +1,7 @@
 import React, {lazy, Suspense} from 'react';
 import './App.css';
-import {HashRouter, Route, Switch, withRouter} from "react-router-dom";
-import store, {AppStateType, ReduxStoreType} from "./redux/redux-store";
+import {HashRouter, Redirect, Route, Switch, withRouter} from "react-router-dom";
+import store, {AppStateType} from "./redux/redux-store";
 // import DialogsContainer from './components/Dialogs/DialogsContainer';
 import {NavbarContainer} from "./components/Navbar/NavbarContainer";
 // import UsersContainer from "./components/Users/UsersContainer";
@@ -12,6 +12,7 @@ import {connect, Provider} from "react-redux";
 import {compose} from "redux";
 import {initializeApp} from "./redux/app-reducer";
 import {Preloader} from "./components/common/Preloader/Preloader";
+import { Error404 } from './components/common/Error404/Error404';
 
 const DialogsContainer = lazy(() => import('./components/Dialogs/DialogsContainer'));
 const ProfileContainer = lazy(() => import('./components/Profile/ProfileContainer'));
@@ -34,22 +35,12 @@ class App extends React.Component<AppContainerPropsType> {
                 <div className='App-content'>
                     <Suspense fallback={<Preloader/>}>
                         <Switch>
-                            <Route
-                                path='/dialogs'
-                                component={DialogsContainer}
-                            />
-                            <Route
-                                path='/profile/:userId?'
-                                component={ProfileContainer}
-                            />
-                            <Route
-                                path='/users'
-                                component={UsersContainer}
-                            />
-                            <Route
-                                path='/login'
-                                component={Login}
-                            />
+                            <Route path={"/"} exact render={() => <Redirect to={'/profile'}/>}/>
+                            <Route path='/dialogs' component={DialogsContainer}/>
+                            <Route path='/profile/:userId?' component={ProfileContainer}/>
+                            <Route path='/users' component={UsersContainer}/>
+                            <Route path='/login' component={Login}/>
+                            <Route render={() => <Error404/>}/>
                         </Switch>
                     </Suspense>
                 </div>
@@ -105,21 +96,4 @@ export type PostType = {
     message: string
     likes: number
 }
-type PostsType = {
-    posts: Array<PostType>
-    newPostText: string
-}
-type DialogsType = {
-    dialogs: Array<DialogItemType>
-    messages: Array<MessageType>
-    newMessageBody: string
-}
-export type StateType = {
-    sidebar: Array<NavbarItemType>
-    profilePage: PostsType
-    dialogsPage: DialogsType
-}
 
-export type StoreType = {
-    store: ReduxStoreType
-}
