@@ -2,6 +2,7 @@ import {ActionsTypes} from "./redux-store";
 import {ThunkType} from "./users-reducer";
 import {profileAPI} from "../api/api";
 import {ProfileDataFormType} from "../components/Profile/ProfileInfo/ProfileDataForm";
+import {stopSubmit} from "redux-form";
 
 
 const ADD_POST = 'profile/ADD_POST'
@@ -89,6 +90,9 @@ export const saveProfile = (profile: ProfileDataFormType): ThunkType => async (d
     const response = await profileAPI.saveProfile(profile)
     if (response.data.resultCode === 0) {
         dispatch(getUserProfile(userId))
+    } else {
+        dispatch(stopSubmit('editProfile', {_error: response.data.messages[0]}))
+        return Promise.reject(response.data.messages[0])
     }
 }
 

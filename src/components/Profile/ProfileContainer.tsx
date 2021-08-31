@@ -73,7 +73,7 @@ type MapDispatchPropsType =
         getStatus: (userId: string) => void
         updateStatus: (status: string) => void
         savePhoto: (file: string | File) => void
-        saveProfile: (profile: ProfileDataFormType) => void
+        saveProfile: (profile: ProfileDataFormType) => Promise<any>
     }
 type PathParamsType = {
     userId: string

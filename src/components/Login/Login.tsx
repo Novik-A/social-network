@@ -25,26 +25,30 @@ const LoginForm: React.FC<InjectedFormProps<LoginFormDataType, LoginFormOwnProps
     return (
         <form onSubmit={handleSubmit}>
             <div>
-                <Field placeholder={'Email'} name={'email'}
+                <Field placeholder={'Email'}
+                       name={'email'}
                        validate={[required]}
                        component={Input}/>
             </div>
             <div>
                 <Field placeholder={'Password'} name={'password'}
-                       type={'password'} validate={[required]}
+                       type={'password'}
+                       validate={[required]}
                        component={Input}/>
             </div>
             <div>
-                <Field type={'checkbox'} name={'rememberMe'} component={Input}/>remember me
+                <Field type={'checkbox'}
+                       name={'rememberMe'}
+                       component={Input}/>remember me
             </div>
-            {captchaUrl && <img src={captchaUrl}/>}
-            {captchaUrl && <Field placeholder={'Symbols from image'} name={'captchaUrl'}
+            {captchaUrl && <img src={captchaUrl} alt={'captcha'}/>}
+            {captchaUrl && <Field placeholder={'Symbols from image'}
+                                  name={'captchaUrl'}
                                   validate={[required]}
                                   component={Input}/>}
             {error && <div className={styles.formSummaryError}>
                 {error}
-            </div>
-            }
+            </div>}
             <div>
                 <button>Login</button>
             </div>

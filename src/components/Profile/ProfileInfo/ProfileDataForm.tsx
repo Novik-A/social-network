@@ -1,5 +1,6 @@
 import React from "react";
 import s from './ProfileInfo.module.css';
+// import styles from '../common/FormsControls/FormsControls.module.css';
 import {Input, Textarea} from "../../common/FormsControls/FormsControls";
 import {Field, InjectedFormProps, reduxForm} from "redux-form";
 import {ProfileType} from "../../../api/api";
@@ -24,9 +25,16 @@ type ProfilePreviousValuesType = {
     profile: ProfileType
 }
 
-const ProfileDataForm: React.FC<InjectedFormProps<ProfileDataFormType, ProfilePreviousValuesType> & ProfilePreviousValuesType> = ({handleSubmit, profile}) => {
+const ProfileDataForm: React.FC<InjectedFormProps<ProfileDataFormType, ProfilePreviousValuesType> & ProfilePreviousValuesType> = ({
+                                                                                                                                      handleSubmit,
+                                                                                                                                      error,
+                                                                                                                                      profile}) => {
+
     return <form onSubmit={handleSubmit}>
         <div><button>save</button></div>
+        {error && <div style={{border:'red 1px solid', padding: '5px', color: 'red'}}>
+            {error}
+        </div>}
         <div>
             <b>Full name</b>: <Field placeholder={'Full name'}
                                      name={'fullName'}
